@@ -8,6 +8,8 @@
     "wait-on": "^5.0.1"
   },
   "scripts": {
-    "start": "concurrently \"cd server && yarn dev\" \"wait-on http://localhost:4000\" \"cd client && yarn start\""
+    "start": "concurrently \"cd server && yarn dev\" \"wait-on http://localhost:4000\" \"cd client && yarn start\"",
+    "install_server": "cd server && yarn install",
+    "install_client": "cd client && yarn install"
   }
 }
