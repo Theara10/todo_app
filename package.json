@@ -1,0 +1,13 @@
+{
+  "name": "todo_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^5.2.0",
+    "wait-on": "^5.0.1"
+  },
+  "scripts": {
+    "start": "concurrently \"cd server && yarn dev\" \"wait-on http://localhost:4000\" \"cd client && yarn start\""
+  }
+}
