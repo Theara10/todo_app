@@ -1,0 +1,23 @@
+type Query {
+  _gql: String,
+  me: User
+}
+
+type Mutation {
+  UserCreate(data: UserInput): Boolean,
+  UserLogin(email: String!, password: String!): String
+}
+
+input UserInput {
+  first_name: String!,
+  last_name: String!,
+  email: String!,
+  password: String!,
+  provider: Int = 0
+}
+
+type User {
+  id: Int,
+  display_name: String,
+  email: String
+}
