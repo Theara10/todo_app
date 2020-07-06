@@ -1,17 +1,20 @@
 import Knex from 'knex';
-
 import { knex } from './Setting';
+import { getPubSub } from './PubHub';
+import { PubSub } from 'graphql-subscriptions';
 
 export type ContextType = {
   knex: Knex,
-  user: UserHandler
+  user: UserHandler,
+  pubsub: PubSub
 }
 
 export const context = async ({req}: any) => {
   const auth = new UserHandler(req.query.token);
   return {
     knex,
-    user: auth
+    user: auth,
+    pubsub: getPubSub()
   }
 }
 

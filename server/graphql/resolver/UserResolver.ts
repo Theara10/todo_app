@@ -32,9 +32,9 @@ const UserLogin = async (_: any, { email, password }: any, ctx: ContextType) => 
   return;
 }
 
-const me = async (_: any, {}: any, ctx: ContextType) => {
+const me = async (_: any, {}: any, ctx: ContextType, info: any) => {
+  info.cacheControl.setCacheHint({ maxAge: 60, scope: 'PRIVATE' });
   const user = await ctx.user.getUser();
-
   return user;
 }
 
@@ -45,6 +45,11 @@ export const UserResolver = {
   },
   Mutation: {
     UserCreate,
-    UserLogin
+    UserLogin,
+    Add: async (_: any, {data}: any, ctx: ContextType) => {
+      const pub = await ctx.pubsub;
+      pub.publish('TRIGGER', { trigger: data })
+      return true;
+    }
   }
 }

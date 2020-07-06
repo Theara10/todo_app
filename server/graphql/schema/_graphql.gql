@@ -1,11 +1,16 @@
+type Subscription {
+  trigger: String
+}
+
 type Query {
   _gql: String,
-  me: User
+  me: User @cacheControl(scope: PRIVATE)
 }
 
 type Mutation {
   UserCreate(data: UserInput): Boolean,
-  UserLogin(email: String!, password: String!): String
+  UserLogin(email: String!, password: String!): String,
+  Add(data: String): Boolean
 }
 
 input UserInput {
@@ -16,7 +21,7 @@ input UserInput {
   provider: Int = 0
 }
 
-type User {
+type User @cacheControl(maxAge: 240){
   id: Int,
   display_name: String,
   email: String
