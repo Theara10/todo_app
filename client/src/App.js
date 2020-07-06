@@ -1,24 +1,25 @@
-import React from 'react';
+import React,{useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Input} from './components/Input';
+import {List} from './components/List';
 
 function App() {
+  const data = localStorage.getItem('todo') === null ? []:JSON.parse(localStorage.getItem('todo'));
+  const [item, setItem] = useState(data);
+
+  const onDeleted = () => {
+    const items = localStorage.getItem('todo') === null ? []:JSON.parse(localStorage.getItem('todo'));
+    setItem(items)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Input onSubmit={ async e => {
+        console.log(e)
+        setItem([...item, e])
+      }}/>
+      <List items={item} onDeleted={onDeleted}/>
     </div>
   );
 }

@@ -1,38 +1,57 @@
+body {
+  background-color: #9266ff;
+}
+
 .App {
-  text-align: center;
+  background-color: #3f3160;
+  min-height: 500px;
+  width: 400px;
+  margin: 40px auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.input-form input{
+  background-color: rgba(255,255,255,0.5);
+  border: 0;
+  width: 230px;
+  height: 50px;
+  padding: 0 20px;
+  margin: 20px;
+  font-size: 18px;
+  border-radius: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.input-form input::placeholder{
+ color: white;
+}
+.input-form input::focus{
+ outline: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.input-form button {
+  height: 50px;
+  width: 80px;
+  border-radius: 5px;
+  border: 0;
+  font-size: bolder;
+  background-color: rgb(202,156,24);
+}
+
+.list {
   color: white;
+  background-color: #bf4702ac;
+  width: 300px;
+  height: 50px;
+  border-radius: 5px;
+  margin: 20px auto;
 }
 
-.App-link {
-  color: #61dafb;
+.list p{
+  padding: 10px;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.list p span {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
 }
