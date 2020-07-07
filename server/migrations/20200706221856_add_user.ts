@@ -11,6 +11,7 @@ export async function up(knex: Knex): Promise<any> {
       table.string('password');
       table.string('token');
       table.timestamp('expire_token');
+      table.text('url_photo');
       table.timestamps(true, true);
     })
   }

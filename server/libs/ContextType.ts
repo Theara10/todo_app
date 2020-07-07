@@ -1,20 +1,16 @@
 import Knex from 'knex';
 import { knex } from './Setting';
-import { getPubSub } from './PubHub';
-import { PubSub } from 'graphql-subscriptions';
 
 export type ContextType = {
   knex: Knex,
-  user: UserHandler,
-  pubsub: PubSub
+  user: UserHandler
 }
 
 export const context = async ({req}: any) => {
   const auth = new UserHandler(req.query.token);
   return {
     knex,
-    user: auth,
-    pubsub: getPubSub()
+    user: auth
   }
 }
 
@@ -29,7 +25,7 @@ class UserHandler {
     const user = await knex('users').where({token: this.token}).first();
     if(user === undefined) return null;
     if(new Date(user.expire_token).getTime() <= new Date().getTime()) {
-      await knex('users').update({ token: null }).where({id: user.id});
+      await knex('users').update({ token: null, updated_at: Date.now() }).where({id: user.id});
       throw 'token was expire';
     }
     return user;
