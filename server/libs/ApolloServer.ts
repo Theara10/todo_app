@@ -28,7 +28,7 @@ export const server = new ApolloServer({
     settings: {
       'editor.theme': 'dark',
       'editor.fontSize': 11,
-      'editor.fontFamily': "'ubuntu', 'monospace'"
+      'editor.fontFamily': "'ubuntu', 'monospace', 'Fira Code'"
     }
   }
   // cacheControl: {
