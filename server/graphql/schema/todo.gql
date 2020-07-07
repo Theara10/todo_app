@@ -1,0 +1,26 @@
+extend type Query {
+  todoList(offset: Int = 0, limit: Int = 10): [Todo],
+  todoById(id: Int!): Todo
+}
+
+extend type Mutation {
+  todoCreate(data: TodoInput!): Boolean
+  todoEdit(id: Int!, data: TodoInput!): Boolean
+  todoRemove(id: Int!): Boolean,
+  todoToggleDone(id: Int!): Boolean
+}
+
+type Todo {
+  id: Int,
+  title: String,
+  description: String,
+  user: User,
+  created_at: String,
+  updated_at: String,
+  is_done: Int
+}
+
+input TodoInput {
+  title: String,
+  description: String
+}
