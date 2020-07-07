@@ -9,14 +9,14 @@ function App() {
   const [item, setItem] = useState(data);
 
   const onDeleted = () => {
-    const items = localStorage.getItem('todo') === null ? []:JSON.parse(localStorage.getItem('todo'));
-    setItem(items)
+    const data = localStorage.getItem('todo') === null ? []:JSON.parse(localStorage.getItem('todo'));
+    console.log(data)
+    setItem(data)
   }
 
   return (
     <div className="App">
-      <Input onSubmit={ async e => {
-        console.log(e)
+      <Input onSubmit={ e => {
         setItem([...item, e])
       }}/>
       <List items={item} onDeleted={onDeleted}/>

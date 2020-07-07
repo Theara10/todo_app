@@ -1,5 +1,5 @@
 body {
-  background-color: #9266ff;
+  background-color: #dff9fb;
 }
 
 .App {
@@ -54,4 +54,8 @@ body {
   position: absolute;
   right: 10px;
   cursor: pointer;
+}
+
+#edit {
+  margin-right: 50px;
 }
