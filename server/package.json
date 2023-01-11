@@ -17,7 +17,7 @@
     "bcrypt": "^5.0.0",
     "graphql": "^15.3.0",
     "graphql-subscriptions": "^1.1.0",
-    "knex": "^0.21.1",
+    "knex": "^2.4.0",
     "nodemon": "^2.0.4",
     "password-hash": "^1.2.2",
     "sqlite3": "^5.0.0",
